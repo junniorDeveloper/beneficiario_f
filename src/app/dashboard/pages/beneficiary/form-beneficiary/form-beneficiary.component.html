@@ -1,0 +1,79 @@
+<div class="dialog-content">
+  <button class="close-button" (click)="cancel()">×</button>
+  <form *ngIf="personForm" [formGroup]="personForm">
+    <!-- Paso 1: Datos Personales -->
+    <div *ngIf="step === 1">
+      <h2 class="step-title">Datos Personales</h2>
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" formControlName="name" class="form-input" />
+
+        <label for="surname">Apellido</label>
+        <input type="text" id="surname" formControlName="surname" class="form-input" />
+
+        <label for="typeDocument">Tipo de Documento</label>
+        <input type="text" id="typeDocument" formControlName="typeDocument" class="form-input" />
+
+        <label for="documentNumber">Número de Documento</label>
+        <input type="text" id="documentNumber" formControlName="documentNumber" class="form-input" />
+
+        <label for="typeKinship">Parentesco</label>
+        <input type="text" id="typeKinship" formControlName="typeKinship" class="form-input" />
+
+        <label for="familiaId">ID de Familia</label>
+        <input type="number" id="familiaId" formControlName="familiaId" class="form-input" />
+      </div>
+    </div>
+
+    <!-- Paso 2: Educación -->
+    <div *ngIf="step === 2">
+      <h2 class="step-title">Educación</h2>
+      <div class="form-group">
+        <label for="gradeBook">Libro de Grados</label>
+        <input type="text" id="gradeBook" formControlName="education.gradeBook" class="form-input" />
+
+        <label for="gradeAverage">Promedio</label>
+        <input type="number" id="gradeAverage" formControlName="education.gradeAverage" class="form-input" />
+
+        <label for="fullNotebook">Cuaderno Completo</label>
+        <input type="text" id="fullNotebook" formControlName="education.fullNotebook" class="form-input" />
+
+        <label for="educationalAssitence">Asistencia Educativa</label>
+        <input type="text" id="educationalAssitence" formControlName="education.educationalAssitence" class="form-input" />
+
+        <label for="academicTutorias">Tutorías Académicas</label>
+        <input type="text" id="academicTutorias" formControlName="education.academicTutorias" class="form-input" />
+
+        <label for="degreeStudy">Grado de Estudio</label>
+        <input type="text" id="degreeStudy" formControlName="education.degreeStudy" class="form-input" />
+      </div>
+    </div>
+
+    <!-- Paso 3: Salud -->
+    <div *ngIf="step === 3">
+      <h2 class="step-title">Salud</h2>
+      <div class="form-group">
+        <label for="vaccineSchemes">Esquemas de Vacunación</label>
+        <input type="text" id="vaccineSchemes" formControlName="health.vaccineSchemes" class="form-input" />
+
+        <label for="vph">VPH</label>
+        <input type="text" id="vph" formControlName="health.vph" class="form-input" />
+
+        <label for="influenza">Influenza</label>
+        <input type="text" id="influenza" formControlName="health.influenza" class="form-input" />
+
+        <label for="deworming">Desparasitación</label>
+        <input type="text" id="deworming" formControlName="health.deworning" class="form-input" />
+
+        <label for="hemoglobin">Hemoglobina</label>
+        <input type="text" id="hemoglobin" formControlName="health.hemoglobin" class="form-input" />
+      </div>
+    </div>
+
+    <div class="dialog-actions">
+      <button (click)="previousStep()" *ngIf="step > 1">Atrás</button>
+      <button (click)="nextStep()" *ngIf="step < 3">Siguiente</button>
+      <button (click)="submitForm()" *ngIf="step === 3" class="primary-button">Enviar</button>
+    </div>
+  </form>
+</div>

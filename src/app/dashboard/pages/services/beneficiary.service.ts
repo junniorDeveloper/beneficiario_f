@@ -15,11 +15,28 @@ interface Person {
   state: string;
 }
 
+interface Education {
+  gradeBook: string;
+  gradeAverage: number;
+  fullNotebook: string;
+  educationalAssitence: string;
+  academicTutorias: string;
+  degreeStudy: string;
+}
+
+interface Health {
+  vaccineSchemes: string;
+  vph: string;
+  influenza: string;
+  deworning: string;
+  hemoglobin: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class BeneficiaryService {
-  private baseUrl = 'https://friendly-space-orbit-97j76xv54xwxhx54w-8080.app.github.dev/persona';
+  private baseUrl = 'https://friendly-space-orbit-97j76xv54xwxhx54w-8085.app.github.dev/persona';
 
   constructor(private http: HttpClient) { }
 
@@ -35,6 +52,12 @@ export class BeneficiaryService {
       return this.http.get<Person[]>(url); // Asegúrate de usar el endpoint correcto
     }
 
+    registerPerson(personData: any): Observable<any> {
+      const url = `${this.baseUrl}/registrar`;
+      return this.http.post(url, personData);
+    }
+    
+    
     // Método para Eliminar personas
     inactivatePerson(id: number): Observable<string> {
       const url = `${this.baseUrl}/${id}/inactivar`;
