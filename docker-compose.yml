@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  app:
+    image: imagenangularweb
+    ports:
+      - "4200:4200"
+    environment:
+      API_BACKEND : 'https://expert-space-broccoli-wr9gp5jr6qw7hgpqw-8080.app.github.dev/'
+      

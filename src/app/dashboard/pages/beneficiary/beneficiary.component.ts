@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { BeneficiaryService } from '../services/beneficiary.service';
 import { FormBeneficiaryComponent } from '../beneficiary/form-beneficiary/form-beneficiary.component'; // Importa el componente del formulario
+import { FormEditBeneficiaryComponent } from './form-edit-beneficiary/form-edit-beneficiary.component';
 
 @Component({
   selector: 'app-beneficiary',
@@ -131,4 +132,20 @@ export class BeneficiaryComponent implements OnInit {
       }
     });
   }
+editPerson(id: number): void {
+    this.beneficiaryService.getPersonById(id).subscribe(personData => {
+      const dialogRef = this.dialog.open(FormEditBeneficiaryComponent, {
+        width: '600px',
+        disableClose: true,
+        data: personData // Pasa los datos de la persona al formulario
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.loadPersons(); // Actualiza la lista de personas después de editar
+        }
+      });
+    });
+  }
+
 }

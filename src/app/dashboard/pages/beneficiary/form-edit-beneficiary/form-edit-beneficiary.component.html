@@ -1,0 +1,45 @@
+<form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" required />
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="surname" required />
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Tipo de Documento</mat-label>
+      <input matInput formControlName="typeDocument" required />
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Número de Documento</mat-label>
+      <input matInput formControlName="documentNumber" required />
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Tipo de Parentesco</mat-label>
+      <input matInput formControlName="typeKinship" required />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Id Familia</mat-label>
+        <input matInput formControlName="familiaId" readonly  />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Id Educacion</mat-label>
+        <input matInput formControlName="educationIdEducation" readonly  />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Id Salud</mat-label>
+        <input matInput formControlName="healthIdHealth"  readonly />
+      </mat-form-field>
+  
+    <div class="buttons">
+      <button mat-raised-button color="primary" type="submit" [disabled]="personForm.invalid">Guardar</button>
+      <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+  

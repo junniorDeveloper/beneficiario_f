@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { environment } from '../../../../environments/environments';
 interface Person {
   idPerson: number;
   name: string;
@@ -36,7 +36,7 @@ interface Health {
   providedIn: 'root'
 })
 export class BeneficiaryService {
-  private baseUrl = 'https://friendly-space-orbit-97j76xv54xwxhx54w-8085.app.github.dev/persona';
+  private baseUrl = environment.apiUrl+'persona';
 
   constructor(private http: HttpClient) { }
 
@@ -67,6 +67,18 @@ export class BeneficiaryService {
     // Método para Eliminar personas
     restorePerson(id: number): Observable<string> {
       const url = `${this.baseUrl}/${id}/restore`;
-      return this.http.put(url, {}, { responseType: 'text' }); // Cambiar a responseType: 'text'
+      return this.http.put(url, {}, { responseType: 'text' }); 
     }
+
+getPersonById(id: number): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<any>(url);
+  }
+
+  // Actualizar persona
+  updatePerson(id: number, personData: any): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.put(url, personData);
+  }
+
 }

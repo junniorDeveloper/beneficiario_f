@@ -52,6 +52,12 @@
         >
           {{ person.state === 'A' ? 'Eliminar' : 'Restaurar' }}
         </button>
+        <button
+        class="btn btn-warning"
+        (click)="editPerson(person.idPerson)"
+      >
+        Editar
+      </button>
       </td>
     </ng-container>
       
